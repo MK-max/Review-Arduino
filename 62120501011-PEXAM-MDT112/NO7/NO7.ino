@@ -38,11 +38,15 @@ void setup(){
   delay(800);
   tone(8, 600, 300);
 
-  stepper.setSpeed(8); 
+  ; 
 }
 void loop(){
+    stepper.setSpeed(8);
+    
+    for (int STEPS_PER_360_DEGREE = 0; STEPS_PER_360_DEGREE < 9 ;STEPS_PER_360_DEGREE++ )
     if (digitalRead(2) == 0)
     {
         stepper.step(STEPS_PER_360_DEGREE/6);
     }
+
 }
