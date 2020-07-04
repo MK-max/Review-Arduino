@@ -35,7 +35,6 @@ void setup() {
   delay(800);
 }
 
-
 void loop() {
 
 }
