@@ -8,8 +8,7 @@ TM1637 sevenSegment(CLK, DIO);
 #include <Stepper.h> 
 
 #define STEPS_PER_360_DEGREE 2038 
-
-Stepper stepper(STEPS_PER_360_DEGREE, 8, 10, 9, 11); 
+Stepper stepper(TEPS_PER_360_DEGREE, 8, 10, 9, 11); 
 
 void setup(){
 
@@ -19,12 +18,12 @@ void setup(){
 
   stepper.setSpeed(16); 
   Serial.println("Step CW 360  Degrees"); 
-  stepper.step(STEPS_PER_360_DEGREE); 
+  stepper.step(TEPS_PER_360_DEGREE); 
   delay(900);
 
   stepper.setSpeed(16); 
   Serial.println("Step CCW 360  Degrees"); 
-  stepper.step(-STEPS_PER_360_DEGREE); 
+  stepper.step(-TEPS_PER_360_DEGREE); 
   delay(800);  
   sevenSegment.init();
   sevenSegment.set(7); 
@@ -43,13 +42,20 @@ void setup(){
 void loop(){
 
     stepper.setSpeed(8);
-    if (digitalRead(2) == 0)
+
+    for( int TEPS_PER_360_DEGREE = 0; TEPS_PER_360_DEGREE < 9; TEPS_PER_360_DEGREE++)
     {
-      stepper.step(-STEPS_PER_360_DEGREE/6);
+        if (digitalRead(2) == 0)
+        {
+            stepper.step(TEPS_PER_360_DEGREE/6);
+        }
     }
-    if 
+    for( int TEPS_PER_360_DEGREE = 0; TEPS_PER_360_DEGREE > 1; TEPS_PER_360_DEGREE++)
     {
-      stepper.step(-STEPS_PER_360_DEGREE/-6);
+        if (digitalRead(2) == 0)
+        {
+            stepper.step(-TEPS_PER_360_DEGREE/6);
+        }
     }
     
 }
